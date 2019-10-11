@@ -16,17 +16,9 @@ gc2019Router
     if(gc2019Service.addComment(req.body)){
       res.send({results:"success:comments add"});
     }else{
+      res.status(400);
       res.send({results:"error:comments add - missing input values"});
     }
   });
-//gc2019Router.get('/itinerary', (req, res) => {
-//  res.send(store.gc2019);
-//});
 
-//gc2019Router.post('/comments/add', (req, res) => {
-//  //let temp = req.body;
-//  //console.log(`request.body = ${req.body}`);
-//  res.send({results:"success:comments add"});
-//});
-
-module.exports = gc2019Router
+module.exports = gc2019Router;

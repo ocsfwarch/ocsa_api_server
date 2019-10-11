@@ -15,4 +15,4 @@ const GC2019Service = {
     }
 }// End GC2019Service
 
-module.exports = GC2019Service
+module.exports = GC2019Service;

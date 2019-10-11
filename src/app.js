@@ -7,6 +7,7 @@ const { NODE_ENV }        = require('./config')
 const validateBearerToken = require('./validate-bearer-token')
 const errorHandler        = require('./error-handler')
 const gc2019Router        = require('./gc2019_components/gc2019-router')
+const ocsaWthrRouter      = require('./ocsa_weather_components/ocsa-wthr-router');
 const store               = require('./store')
 
 const app = express()
@@ -19,6 +20,7 @@ app.use(helmet());
 app.use(validateBearerToken);
 
 app.use('/gcapi', gc2019Router);
+app.use('/wthrapi', ocsaWthrRouter );
 
 app.get('/', (req, res) => {
   res.send('Welcome to the default endpoint for ocsa-api-server');
