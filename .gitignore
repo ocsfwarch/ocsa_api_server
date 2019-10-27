@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+chat_news_comments.txt
 
 # Runtime data
 pids

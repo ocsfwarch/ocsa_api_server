@@ -5,6 +5,7 @@ const GC2019Service = {
         //for( let key in temp){
         //  console.log(`Key = ${key}, Val = ${temp[key]}`);
         //}
+        //const objJson = JSON.parse(comment);
         if( typeof comment !== 'undefined'){
             if(comment.hasOwnProperty('itemKey')){
                 bReturn = true;
