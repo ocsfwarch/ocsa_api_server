@@ -8,6 +8,19 @@ const ChatNewsService = {
   getError(){
     return this.strErr;
   },
+  getComments(){
+    return new Promise(function(resolve, reject){
+      let strReturn = "{\"comments\":[]}";
+      fs.readFile(fileUrl, {encoding:'utf8',flag:'r'}, (err, data) => {
+        if(err){
+          reject(strReturn);
+        }else{
+          strReturn = `{\"comments\":[${data}]}`;
+          resolve(strReturn);
+        }
+      });  
+    });
+  },
   addComment(comment){
       let bReturn = false;
       //for( let key in temp){
@@ -17,7 +30,8 @@ const ChatNewsService = {
           if(comment.hasOwnProperty('itemKey')){
             if(comment.hasOwnProperty('strDate')){
               if(comment.hasOwnProperty('strComment')){
-                fs.writeFile(fileUrl, JSON.stringify(comment), {encoding:'utf8',flag:'a'}, (err) => {
+                const strComment = JSON.stringify(comment) + ",";
+                fs.writeFile(fileUrl, strComment, {encoding:'utf8',flag:'a'}, (err) => {
                   if(err){
                     this.setError("Failed to save comment");
                   }else{
@@ -30,7 +44,7 @@ const ChatNewsService = {
       }
 
       return bReturn;
-  }
+  }// End addComment
 }// End ChatNewsService
 
 module.exports = ChatNewsService;
