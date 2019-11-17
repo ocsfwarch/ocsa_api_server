@@ -13,7 +13,7 @@ const ChatNewsService = {
       let strReturn = "{\"comments\":[]}";
       fs.readFile(fileUrl, {encoding:'utf8',flag:'r'}, (err, data) => {
         if(err){
-          reject(strReturn);
+          reject(JSON.stringify(strReturn));
         }else{
           data = ChatNewsService.checkForComma(data);
           strReturn = `{\"comments\":[${data}]}`;
