@@ -15,8 +15,9 @@ const ChatNewsService = {
         if(err){
           reject(strReturn);
         }else{
+          data = ChatNewsService.checkForComma(data);
           strReturn = `{\"comments\":[${data}]}`;
-          resolve(strReturn);
+          resolve(JSON.stringify(strReturn));
         }
       });  
     });
@@ -44,7 +45,23 @@ const ChatNewsService = {
       }
 
       return bReturn;
-  }// End addComment
+  },// End addComment
+  checkForComma(strValue){
+    var nLen = 0;
+    var strChar = "";
+    
+      // Remove the last comma    
+          nLen = strValue.length;
+          if(nLen > 0)
+          {
+            strChar = strValue.substring((nLen - 1), nLen);
+            if(strChar == ","){
+                strValue = strValue.substring(0, (nLen - 1));
+              }
+          }
+      
+      return(strValue);
+  },
 }// End ChatNewsService
 
 module.exports = ChatNewsService;
